@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - ANGEL'S SWEET HEAVEN Store</title>
+    <title>Exchange & Refund Policy - Candy Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* ===== RESET & BASE STYLES ===== */
@@ -114,7 +114,7 @@
             color: var(--pink-dark);
         }
 
-        /* ===== NAVIGATION ===== */
+         /* ===== NAVIGATION ===== */
         nav {
             background-color: var(--pink-light);
             border-bottom: 2px solid var(--pink);
@@ -214,188 +214,86 @@
             margin: 15px auto 0;
         }
 
-        /* ===== CONTACT PAGE ===== */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
+        /* ===== POLICY PAGE ===== */
+        .policy-content {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .contact-info {
-            background-color: var(--pink-light);
-            padding: 40px;
+        .policy-section {
+            background-color: var(--white);
+            padding: 30px;
             border-radius: 15px;
-            border: 2px solid var(--pink);
-        }
-
-        .contact-info h2 {
-            color: var(--burgundy);
-            margin: 25px 0 15px;
-            font-size: 24px;
-            border-bottom: 2px solid var(--pink);
-            padding-bottom: 10px;
-        }
-
-        .contact-info h2:first-child {
-            margin-top: 0;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            background-color: var(--white);
-            padding: 15px;
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-
-        .info-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 3px 10px rgba(128, 0, 32, 0.1);
-        }
-
-        .info-item i {
-            width: 45px;
-            height: 45px;
-            background-color: var(--burgundy);
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-
-        .info-item p {
-            color: #555;
-            font-size: 15px;
-        }
-
-        .social-icons.large {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-icons.large a {
-            font-size: 24px;
-            color: var(--burgundy);
-            transition: all 0.3s;
-            background-color: var(--white);
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-        }
-
-        .social-icons.large a:hover {
-            background-color: var(--burgundy);
-            color: var(--white);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(128, 0, 32, 0.2);
-        }
-
-        .contact-form {
-            background-color: var(--white);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(128, 0, 32, 0.1);
-            border: 2px solid var(--pink-light);
-        }
-
-        .contact-form h2 {
-            color: var(--burgundy);
             margin-bottom: 25px;
-            font-size: 24px;
-            border-bottom: 2px solid var(--pink);
+            box-shadow: 0 3px 15px rgba(128, 0, 32, 0.08);
+            border-left: 4px solid var(--pink);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .policy-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(128, 0, 32, 0.12);
+        }
+
+        .policy-section h2 {
+            color: var(--burgundy);
+            margin-bottom: 15px;
+            font-size: 22px;
+            border-bottom: 2px solid var(--pink-light);
             padding-bottom: 10px;
         }
 
-        .form-group {
-            margin-bottom: 20px;
+        .policy-section p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+            color: #555;
         }
 
-        .form-group label {
-            display: block;
+        .policy-section ul {
+            list-style: disc;
+            padding-left: 20px;
+            margin: 15px 0;
+            color: #555;
+        }
+
+        .policy-section li {
             margin-bottom: 8px;
-            color: var(--burgundy);
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 14px;
-            transition: border-color 0.3s;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--pink);
-            box-shadow: 0 0 0 3px rgba(255, 182, 193, 0.2);
-        }
-
-        .btn-primary {
-            display: inline-block;
-            background-color: var(--burgundy);
-            color: var(--white);
-            padding: 14px 35px;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--pink-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(128, 0, 32, 0.3);
+            line-height: 1.6;
         }
 
         /* ===== FOOTER ===== */
         footer {
             background-color: var(--burgundy-dark);
             color: var(--white);
-            padding: 40px 20px;
+            padding: 50px 40px 20px;
             margin-top: 60px;
         }
 
         .footer-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
-        }
-
-        .footer-section {
-            flex: 1;
-            min-width: 250px;
+            margin-bottom: 40px;
         }
 
         .footer-section h4 {
-            color: var(--pink);
             margin-bottom: 20px;
             font-size: 18px;
-            border-bottom: 2px solid var(--pink);
+            position: relative;
             padding-bottom: 10px;
-            display: inline-block;
+            color: var(--pink);
+        }
+
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--pink);
         }
 
         .footer-section ul li {
@@ -403,12 +301,14 @@
         }
 
         .footer-section a {
-            color: #ddd;
+            opacity: 0.8;
             transition: all 0.3s;
+            color: #ddd;
             display: inline-block;
         }
 
         .footer-section a:hover {
+            opacity: 1;
             color: var(--pink);
             transform: translateX(5px);
         }
@@ -420,7 +320,7 @@
         }
 
         .social-icons a {
-            font-size: 1.5rem;
+            font-size: 20px;
             color: var(--white);
             transition: all 0.3s;
             background-color: rgba(255, 255, 255, 0.1);
@@ -439,34 +339,30 @@
         }
 
         .footer-bottom {
-            text-align: center;
-            margin-top: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 182, 193, 0.2);
-            color: #aaa;
+            text-align: center;
             font-size: 14px;
+            opacity: 0.8;
+            color: #aaa;
         }
 
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 768px) {
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-            
             .header-container {
                 flex-direction: column;
                 gap: 15px;
             }
             
-            .nav-menu {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
             
-            .footer-content {
-                flex-direction: column;
-                gap: 30px;
+            .policy-section {
+                padding: 20px;
             }
         }
     </style>
@@ -509,61 +405,56 @@
                 </ul>
         </ul>
     </nav>
+    
 
-
-    <!-- Contact Content -->
+    <!-- Policy Content -->
     <div class="page-container">
-        <h1 class="page-title">Contact Us</h1>
+        <h1 class="page-title">Exchange & Refund Policy</h1>
         
-        <div class="contact-container">
-            <div class="contact-info">
-                <h2>Get in Touch</h2>
-                <div class="info-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p>56789 Candy Lane, Mogoditshane, ST 12345</p>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-phone"></i>
-                    <p>+267 76 234 982</p>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-envelope"></i>
-                    <p>angel'ssweetheavenstore@gmail.com</p>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-clock"></i>
-                    <p>Mon-Fri: 9am - 6pm</p>
-                </div>
-                
-                <h2>Follow Us</h2>
-                <div class="social-icons large">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                </div>
+        <div class="policy-content">
+            <div class="policy-section">
+                <h2>Our Guarantee</h2>
+                <p>At Candy Store, we want you to be completely satisfied with your purchase. If you're not happy with your order, we're here to help!</p>
             </div>
             
-            <div class="contact-form">
-                <h2>Send Us a Message</h2>
-                <form>
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary">Send Message</button>
-                </form>
+            <div class="policy-section">
+                <h2>Returns</h2>
+                <p>You have 30 calendar days to return an item from the date you received it. To be eligible for a return, your item must be:</p>
+                <ul>
+                    <li>Unopened and in its original packaging</li>
+                    <li>Not expired or damaged</li>
+                    <li>In resellable condition</li>
+                </ul>
+            </div>
+            
+            <div class="policy-section">
+                <h2>Refunds</h2>
+                <p>Once we receive your item, we will inspect it and notify you that we have received your returned item. We will immediately notify you on the status of your refund after inspecting the item.</p>
+                <p>If your return is approved, we will initiate a refund to your original method of payment. You will receive the credit within a certain amount of days, depending on your card issuer's policies.</p>
+            </div>
+            
+            <div class="policy-section">
+                <h2>Exchanges</h2>
+                <p>If you need to exchange an item for a different product, send us an email at exchanges at angel'scandystore@gmail.com. We'll guide you through the process.</p>
+            </div>
+            
+            <div class="policy-section">
+                <h2>Shipping</h2>
+                <p>You will be responsible for paying for your own shipping costs for returning your item. Shipping costs are non-refundable. If you receive a refund, the cost of return shipping will be deducted from your refund.</p>
+            </div>
+            
+            <div class="policy-section">
+                <h2>Damaged or Incorrect Items</h2>
+                <p>If you received a damaged item or the wrong product, please contact us immediately at support at angel'scandystore@gmail.com with your order number and photos of the item. We'll make it right!</p>
+            </div>
+            
+            <div class="policy-section">
+                <h2>Contact Us</h2>
+                <p>If you have any questions about our Exchange & Refund Policy, please contact us:</p>
+                <ul>
+                    <li>Email: returns@angel'scandystore@gmail.com</li>
+                    <li>Phone: +267 76 543 298</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -575,7 +466,7 @@
                 <h4>Quick Links</h4>
                 <ul>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="exchange-policy.html">Exchange & Refund Policy</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
                     <li><a href="reviews.html">Reviews</a></li>
                 </ul>
             </div>

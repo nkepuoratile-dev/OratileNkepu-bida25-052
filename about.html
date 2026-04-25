@@ -1,44 +1,410 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - ANGEL'S SWEET HEAVEN Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <title>About Me</title>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
 
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ===== COLOR THEME VARIABLES ===== */
+        :root {
+            --pink-light: #fff0f3;
+            --pink: #ffb6c1;
+            --pink-dark: #ff9eb5;
+            --burgundy: #800020;
+            --burgundy-dark: #4a0012;
+            --burgundy-light: #a04545;
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+            --gray: #6c757d;
+            --dark: #343a40;
+        }
+
+        /* ===== TOP BANNER ===== */
+        .top-banner {
+            background-color: var(--burgundy);
+            color: var(--white);
+            text-align: center;
+            padding: 10px 0;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .top-banner a {
+            color: var(--pink);
+            font-weight: bold;
+            margin-left: 10px;
+            transition: opacity 0.3s;
+        }
+
+        .top-banner a:hover {
+            opacity: 0.8;
+            color: var(--white);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: var(--white);
+            padding: 20px 40px;
+            box-shadow: 0 2px 10px rgba(128, 0, 32, 0.1);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 32px;
+            color: var(--burgundy);
+        }
+
+        .logo span {
+            color: var(--pink-dark);
+            font-weight: 300;
+        }
+
+        .header-icons a {
+            margin-left: 20px;
+            font-size: 20px;
+            color: var(--burgundy);
+            transition: color 0.3s;
+        }
+
+        .header-icons a:hover {
+            color: var(--pink-dark);
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            background-color: var(--pink-light);
+            border-bottom: 2px solid var(--pink);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-menu {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 20px;
+            gap: 25px;
+        }
+
+        .nav-menu > li {
+            position: relative;
+        }
+
+        .nav-menu > li > a {
+            color: var(--burgundy);
+            font-weight: 500;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+
+        .nav-menu > li > a:hover,
+        .nav-menu > li > a.active {
+            color: var(--burgundy-light);
+        }
+
+        .nav-menu > li > a i {
+            font-size: 12px;
+            margin-left: 5px;
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            min-width: 220px;
+            box-shadow: 0 5px 20px rgba(128, 0, 32, 0.15);
+            border-radius: 5px;
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s;
+            z-index: 100;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 8px 20px;
+            color: var(--dark);
+            transition: all 0.3s;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: var(--pink-light);
+            color: var(--burgundy);
+            padding-left: 25px;
+        }
+
+        /* ===== PAGE CONTAINER ===== */
+        .page-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            color: var(--burgundy);
+            margin-bottom: 40px;
+            font-size: 36px;
+            text-align: center;
+            position: relative;
+        }
+
+        .page-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--pink);
+            margin: 15px auto 0;
+        }
+
+        /* ===== ABOUT CONTENT ===== */
+        .about-content {
+            display: grid;
+            gap: 40px;
+        }
+
+        .about-section {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(128, 0, 32, 0.1);
+            border-left: 4px solid var(--pink);
+        }
+
+        .about-section h2 {
+            color: var(--burgundy);
+            margin-bottom: 20px;
+            font-size: 24px;
+            border-bottom: 2px solid var(--pink-light);
+            padding-bottom: 10px;
+        }
+
+        .about-section p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #555;
+        }
+
+        .feature-list i {
+            color: var(--burgundy);
+            font-size: 18px;
+            background-color: var(--pink-light);
+            padding: 8px;
+            border-radius: 50%;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--burgundy-dark);
+            color: var(--white);
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-section h4 {
+            color: var(--pink);
+            margin-bottom: 15px;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section a {
+            color: #ddd;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--pink);
+        }
+
+        .social-icons a {
+            margin-right: 15px;
+            font-size: 1.4rem;
+            color: var(--white);
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--pink);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 182, 193, 0.2);
+            color: #aaa;
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+       <p>Free delivery on orders over P500 T&C's apply | P100 delivery for order below P500 <a href="#" class="shop-now" id="shopNowBanner">SHOP NOW →</a></p>
+    </div>
 
+    <!-- Header -->
     <header>
-
-        <h1>About Me</h1>
-
-        <nav>
-
-            <a href="index.html">Home</a> |
-            <a href="about.html">About</a> |
-            <a href="contact.html">Contact</a>|
-            <a href="cart.html">Cart</a>|
-            <a href="continue-shopping.html">Continue Shopping</a>|
-            <a href="loyal-customer-discount.html">Loyal customer discount</a>|
-            <a href="return-and-exchange-policy.html">Return and exchange policy</a>|
-            <a href="reviews.html">Reviews</a>|
-            <a href="location.html">Location</a>
-        </nav>
-
+        <div class="header-container">
+            <div class="logo">
+                <h1>ANGEL'S SWEET HEAVEN <span>STORE</span></h1>
+            </div>
+            <div class="header-icons">
+                <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                <a href="contact.html"><i class="fas fa-user"></i></a>
+            </div>
+        </div>
     </header>
-<main>
-        <p>Hi! I'm a beginner web developer learning how to use GitHub Pages.</p>
-        <p>This is my first multi-page website, and I'm excited to share it with you!</p>
-    </main>
 
+     <!-- Navigation -->
+    <nav>
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            
+            <li class="dropdown">
+                <a href="#">By Candy and Cake Type <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="gummy.html">Gummy Candy</a></li>
+                    <li><a href="jelly-beans.html">Jelly Beans</a></li>
+                    <li><a href="mints.html">Mints and Peppermint Candy</a></li>
+                    <li><a href="sour.html">Sour Candy</a></li>
+<li><a href="carrot-cake.html">Carrot Cake</a></li>
+        <li><a href="chocolate-cake.html">Chocolate Cake</a></li>
+        <li><a href="vanilla-cake.html">Vanilla Cake</a></li>
+        <li><a href="red-velvet-cake.html">Red Velvet Cake</a></li>
+                </ul>
+        </ul>
+    </nav>
+
+    <!-- About Us Content -->
+    <div class="page-container">
+        <h1 class="page-title">About Us</h1>
+        <div class="about-content">
+            <div class="about-section">
+                <h2>Our Story</h2>
+                <p>Welcome to Candy Store, your number one source for all things sweet and delicious. Founded in 2026 by Oratile Nkepu, we've dedicated ourselves to bringing the joy of candy to people of all ages.</p>
+                <p>What started as a small family business has grown into a beloved candy destination, offering hundreds of varieties from classic favorites to exciting new treats from around the world.</p>
+            </div>
+            
+            <div class="about-section">
+                <h2>Our Mission</h2>
+                <p>At Candy Store, our mission is simple: to spread happiness one sweet treat at a time. We believe that candy isn't just food—it's a way to celebrate life's sweet moments, big and small.</p>
+                <p>We're committed to providing the highest quality candies, exceptional customer service, and a shopping experience that's as delightful as our products.</p>
+            </div>
+            
+            <div class="about-section">
+                <h2>Why Choose Us?</h2>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Wide selection of over 500+ candy varieties</li>
+                    <li><i class="fas fa-check"></i> Fresh, high-quality products</li>
+                    <li><i class="fas fa-check"></i> Fast shipping worldwide</li>
+                    <li><i class="fas fa-check"></i> Secure payment options</li>
+                    <li><i class="fas fa-check"></i> 100% satisfaction guaranteed</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2023 Your Name</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="exchange-policy.html">Exchange & Refund Policy</a></li>
+                    <li><a href="review.html">Reviews</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect With Us</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; @2026 Angel's sweet heaven. All rights reserved.</p>
+        </div>
     </footer>
+
+    <script>
+        // Navigate the "SHOP NOW" link to the cart page
+        document.getElementById('shopNowLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'cart.html';
+        });
+    </script>
 </body>
 </html>

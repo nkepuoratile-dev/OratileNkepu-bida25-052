@@ -3,29 +3,725 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart</title>
+    <title>Shopping Cart - Angel's Sweet Heaven</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        :root {
+            --pink-light: #fff0f3;
+            --pink: #ffb6c1;
+            --pink-dark: #ff9eb5;
+            --burgundy: #800020;
+            --burgundy-dark: #4a0012;
+            --burgundy-light: #a04545;
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+            --gray: #6c757d;
+            --dark: #343a40;
+        }
+
+        .top-banner {
+            background-color: var(--burgundy);
+            color: var(--white);
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .top-banner p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .top-banner a {
+            color: var(--pink);
+            font-weight: bold;
+            margin-left: 5px;
+            transition: all 0.3s;
+            background-color: var(--white);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+
+        .top-banner a:hover {
+            background-color: var(--pink-dark);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        header {
+            background-color: var(--white);
+            padding: 20px 40px;
+            box-shadow: 0 2px 10px rgba(128, 0, 32, 0.1);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 32px;
+            color: var(--burgundy);
+        }
+
+        .logo span {
+            color: var(--pink-dark);
+            font-weight: 300;
+        }
+
+        .header-icons a {
+            margin-left: 20px;
+            font-size: 20px;
+            color: var(--burgundy);
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .header-icons a:hover {
+            color: var(--pink-dark);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: var(--pink);
+            color: var(--burgundy);
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* ===== NAVIGATION ===== */
+    nav {
+      background-color: var(--pink-light);
+      border-bottom: 2px solid var(--pink);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-menu {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 20px;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .nav-menu > li {
+      position: relative;
+    }
+
+    .nav-menu > li > a {
+      color: var(--burgundy);
+      font-weight: 500;
+      padding: 5px 0;
+      transition: color 0.3s;
+    }
+
+    .nav-menu > li > a:hover,
+    .nav-menu > li > a.active {
+      color: var(--burgundy-light);
+    }
+
+    .nav-menu > li > a i {
+      font-size: 12px;
+      margin-left: 5px;
+    }
+
+    /* Dropdown */
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: var(--white);
+      min-width: 220px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      border-radius: 5px;
+      padding: 10px 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s;
+      z-index: 100;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 8px 20px;
+      color: var(--dark);
+      transition: all 0.3s;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: var(--pink-light);
+      color: var(--burgundy);
+      padding-left: 25px;
+    }
+
+        .page-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            min-height: 400px;
+        }
+
+        .page-title {
+            color: var(--burgundy);
+            margin-bottom: 40px;
+            font-size: 36px;
+            text-align: center;
+            position: relative;
+        }
+
+        .page-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--pink);
+            margin: 15px auto 0;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: var(--pink-light);
+            border-radius: 15px;
+            border: 2px dashed var(--pink);
+        }
+
+        .cart-empty i {
+            font-size: 60px;
+            color: var(--burgundy);
+            margin-bottom: 20px;
+        }
+
+        .cart-empty h2 {
+            color: var(--burgundy);
+            margin-bottom: 10px;
+        }
+
+        .cart-empty p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .btn-shop {
+            display: inline-block;
+            background-color: var(--burgundy);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-shop:hover {
+            background-color: var(--pink-dark);
+            transform: translateY(-2px);
+        }
+
+        .cart-items {
+            display: grid;
+            gap: 20px;
+        }
+
+        .cart-item {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 3px 15px rgba(128, 0, 32, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid var(--pink);
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .cart-item-info h3 {
+            color: var(--burgundy);
+            margin-bottom: 5px;
+        }
+
+        .cart-item-info p {
+            color: var(--gray);
+        }
+
+        .cart-item-price {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--burgundy-light);
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            background-color: var(--pink-light);
+            color: var(--burgundy);
+            border: 2px solid var(--pink);
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quantity-btn:hover {
+            background-color: var(--pink);
+            color: var(--white);
+        }
+
+        .quantity-display {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--burgundy);
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .btn-remove {
+            background-color: transparent;
+            color: var(--burgundy);
+            border: 2px solid var(--burgundy);
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-remove:hover {
+            background-color: var(--burgundy);
+            color: var(--white);
+        }
+
+        .cart-summary {
+            background-color: var(--pink-light);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+            border: 2px solid var(--pink);
+        }
+
+        .cart-summary h3 {
+            color: var(--burgundy);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--pink);
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .summary-total {
+            font-weight: 700;
+            color: var(--burgundy);
+            font-size: 24px;
+            border-top: 2px solid var(--pink);
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .btn-checkout {
+            display: block;
+            width: 100%;
+            background-color: var(--burgundy);
+            color: var(--white);
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn-checkout:hover {
+            background-color: var(--pink-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(128, 0, 32, 0.3);
+        }
+
+        .btn-clear {
+            display: block;
+            width: 100%;
+            background-color: transparent;
+            color: var(--burgundy);
+            border: 2px solid var(--burgundy);
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-clear:hover {
+            background-color: var(--burgundy);
+            color: var(--white);
+        }
+
+        footer {
+            background-color: var(--burgundy-dark);
+            color: var(--white);
+            padding: 50px 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: var(--pink);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--pink);
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            opacity: 0.8;
+            transition: all 0.3s;
+            color: #ddd;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+            color: var(--pink);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            font-size: 20px;
+            color: var(--white);
+            transition: all 0.3s;
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .social-icons a:hover {
+            color: var(--burgundy-dark);
+            background-color: var(--pink);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 182, 193, 0.2);
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.8;
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+            .cart-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <p>Free delivery on orders over P500 T&C's apply | P100 delivery for order below P500 <a href="#" class="shop-now" id="shopNowBanner">SHOP NOW →</a></p>
+    </div>
+
+    <!-- Header -->
     <header>
-        <h1>Contact Me</h1>
-        <nav>
-         <a href="index.html">Home</a> |
-            <a href="about.html">About</a> |
-            <a href="contact.html">Contact</a>|
-            <a href="cart.html">Cart</a>|
-            <a href="continue-shopping.html">Continue Shopping</a>|
-            <a href="loyal-customer-discount.html">Loyal customer discount</a>|
-            <a href="return-and-exchange-policy.html">Return and exchange policy</a>|
-            <a href="reviews.html">Reviews</a>|
-            <a href="location.html">Location</a>    
-        </nav>
+        <div class="header-container">
+            <div class="logo">
+                <h1>ANGEL'S SWEET <span>HEAVEN</span></h1>
+            </div>
+            <div class="header-icons">
+                <a href="cart.html">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+                <a href="contact.html"><i class="fas fa-user"></i></a>
+            </div>
+        </div>
     </header>
 
-    <main>
-        
-    </main>
+            <!-- Navigation -->
+    <nav>
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            
+            <li class="dropdown">
+                <a href="#">By Candy and Cake Type <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="gummy.html">Gummy Candy</a></li>
+                    <li><a href="jelly-beans.html">Jelly Beans</a></li>
+                    <li><a href="mints.html">Mints and Peppermint Candy</a></li>
+                    <li><a href="sour.html">Sour Candy</a></li>
+<li><a href="carrot-cake.html">Carrot Cake</a></li>
+        <li><a href="chocolate-cake.html">Chocolate Cake</a></li>
+        <li><a href="vanilla-cake.html">Vanilla Cake</a></li>
+        <li><a href="red-velvet-cake.html">Red Velvet Cake</a></li>
+                </ul>
+        </ul>
+    </nav>
 
+
+    <!-- Cart Content -->
+    <div class="page-container">
+        <h1 class="page-title">Shopping Cart</h1>
+        
+        <div class="cart-empty" id="cartEmpty">
+            <i class="fas fa-shopping-cart"></i>
+            <h2>Your cart is empty</h2>
+            <p>Looks like you haven't added any items to your cart yet.</p>
+            <a href="shop-now.html" class="btn-shop">Start Shopping</a>
+        </div>
+
+        <div class="cart-items" id="cartItems" style="display: none;"></div>
+        <div class="cart-summary" id="cartSummary" style="display: none;"></div>
+    </div>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Your Name</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="exchange-policy.html">Exchange and Refund Policy</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect With Us</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; @2026 Angel's sweet heaven. All rights reserved.</p>
+        </div>
     </footer>
+
+    <script>
+        // Load cart from localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function displayCart() {
+            const cartEmpty = document.getElementById('cartEmpty');
+            const cartItems = document.getElementById('cartItems');
+            const cartSummary = document.getElementById('cartSummary');
+            const cartCount = document.getElementById('cartCount');
+
+            // Update cart count
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+
+            if (cart.length === 0) {
+                cartEmpty.style.display = 'block';
+                cartItems.style.display = 'none';
+                cartSummary.style.display = 'none';
+                return;
+            }
+
+            cartEmpty.style.display = 'none';
+            cartItems.style.display = 'grid';
+            cartSummary.style.display = 'block';
+
+            // Display cart items
+            cartItems.innerHTML = '';
+            let subtotal = 0;
+
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-info">
+                        <h3>${item.name}</h3>
+                        <p>P${item.price.toFixed(2)} each</p>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-control">
+                            <button class="quantity-btn" onclick="updateQuantity(${index}, -1)">-</button>
+                            <span class="quantity-display">${item.quantity}</span>
+                            <button class="quantity-btn" onclick="updateQuantity(${index}, 1)">+</button>
+                        </div>
+                        <span class="cart-item-price">P${itemTotal.toFixed(2)}</span>
+                        <button class="btn-remove" onclick="removeItem(${index})">
+                            <i class="fas fa-trash"></i> Remove
+                        </button>
+                    </div>
+                `;
+                cartItems.appendChild(cartItem);
+            });
+
+            // Calculate delivery
+            const deliveryFee = subtotal >= 500 ? 0 : 100;
+            const total = subtotal + deliveryFee;
+
+            // Display summary
+            cartSummary.innerHTML = `
+                <h3>Order Summary</h3>
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span>P${subtotal.toFixed(2)}</span>
+                </div>
+                <div class="summary-row">
+                    <span>Delivery Fee</span>
+                    <span>${deliveryFee === 0 ? '<span style="color: #4caf50;">FREE</span>' : 'P' + deliveryFee.toFixed(2)}</span>
+                </div>
+                ${deliveryFee > 0 ? '<p style="color: var(--gray); font-size: 14px; margin-top: 5px;">Add P' + (500 - subtotal).toFixed(2) + ' more for free delivery!</p>' : '<p style="color: #4caf50; font-size: 14px; margin-top: 5px;">🎉 You qualify for free delivery!</p>'}
+                <div class="summary-row summary-total">
+                    <span>Total</span>
+                    <span>P${total.toFixed(2)}</span>
+                </div>
+                <button class="btn-checkout" onclick="checkout()">
+                    <i class="fas fa-lock"></i> Proceed to Checkout
+                </button>
+                <button class="btn-clear" onclick="clearCart()">
+                    <i class="fas fa-trash"></i> Clear Cart
+                </button>
+            `;
+        }
+
+        function updateQuantity(index, change) {
+            cart[index].quantity += change;
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        function clearCart() {
+            if (confirm('Are you sure you want to clear your cart?')) {
+                cart = [];
+                localStorage.setItem('cart', JSON.stringify(cart));
+                displayCart();
+            }
+        }
+
+        function checkout() {
+            alert('Thank you for your order! This is a demo cart. In a real store, you would proceed to payment.');
+        }
+
+        // Shop Now link navigates to shop-now.html
+        document.getElementById('shopNowBanner').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'shop-now.html';
+        });
+
+        // Initialize
+        displayCart();
+    </script>
 </body>
+</html>

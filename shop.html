@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop All - Angel's Sweet Heaven</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        :root {
+            --pink-light: #fff0f3;
+            --pink: #ffb6c1;
+            --pink-dark: #ff9eb5;
+            --burgundy: #800020;
+            --burgundy-dark: #4a0012;
+            --burgundy-light: #a04545;
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+            --gray: #6c757d;
+            --dark: #343a40;
+        }
+
+        .top-banner {
+            background-color: var(--burgundy);
+            color: var(--white);
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .top-banner p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .top-banner a {
+            color: var(--pink);
+            font-weight: bold;
+            margin-left: 5px;
+            transition: all 0.3s;
+            background-color: var(--white);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+
+        .top-banner a:hover {
+            background-color: var(--pink-dark);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        header {
+            background-color: var(--white);
+            padding: 20px 40px;
+            box-shadow: 0 2px 10px rgba(128, 0, 32, 0.1);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 32px;
+            color: var(--burgundy);
+        }
+
+        .logo span {
+            color: var(--pink-dark);
+            font-weight: 300;
+        }
+
+        .header-icons a {
+            margin-left: 20px;
+            font-size: 20px;
+            color: var(--burgundy);
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .header-icons a:hover {
+            color: var(--pink-dark);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: var(--pink);
+            color: var(--burgundy);
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        nav {
+            background-color: var(--pink-light);
+            border-bottom: 2px solid var(--pink);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-menu {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            padding: 15px 20px;
+            gap: 30px;
+        }
+
+        .nav-menu > li > a {
+            color: var(--burgundy);
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav-menu > li > a:hover,
+        .nav-menu > li > a.active {
+            color: var(--burgundy-light);
+        }
+
+        .page-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            color: var(--burgundy);
+            margin-bottom: 10px;
+            font-size: 36px;
+            text-align: center;
+            position: relative;
+        }
+
+        .page-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--pink);
+            margin: 15px auto 0;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            color: var(--gray);
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .category-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(128, 0, 32, 0.1);
+            transition: all 0.3s;
+            border: 1px solid var(--pink-light);
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(128, 0, 32, 0.2);
+        }
+
+        .category-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: var(--burgundy);
+        }
+
+        .candy-bg {
+            background: linear-gradient(135deg, #fff0f3 0%, #ffb6c1 100%);
+        }
+
+        .cake-bg {
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+        }
+
+        .category-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .category-info h3 {
+            color: var(--burgundy);
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .category-info p {
+            color: var(--gray);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .category-info .item-count {
+            display: inline-block;
+            background-color: var(--pink-light);
+            color: var(--burgundy);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .btn-view {
+            display: inline-block;
+            background-color: var(--burgundy);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-view:hover {
+            background-color: var(--pink-dark);
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            color: var(--burgundy);
+            font-size: 28px;
+            margin: 40px 0 25px;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--pink-light);
+        }
+
+        footer {
+            background-color: var(--burgundy-dark);
+            color: var(--white);
+            padding: 50px 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: var(--pink);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--pink);
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            opacity: 0.8;
+            transition: all 0.3s;
+            color: #ddd;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+            color: var(--pink);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            font-size: 20px;
+            color: var(--white);
+            transition: all 0.3s;
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .social-icons a:hover {
+            color: var(--burgundy-dark);
+            background-color: var(--pink);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 182, 193, 0.2);
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.8;
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <p>Free delivery on orders over P500 T&C's apply | P100 delivery for order below P500 <a href="#" class="shop-now" id="shopNowBanner">SHOP NOW →</a></p>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>ANGEL'S SWEET <span>HEAVEN</span></h1>
+            </div>
+            <div class="header-icons">
+                <a href="cart.html">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+                <a href="contact.html"><i class="fas fa-user"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop-now.html" class="active">Shop All</a></li>
+            <li><a href="cart.html">Cart</a></li>
+        </ul>
+    </nav>
+
+    <!-- Shop Content -->
+    <div class="page-container">
+        <h1 class="page-title">Shop All Categories</h1>
+        <p class="page-subtitle">Browse our delicious selection of candies and cakes</p>
+
+        <!-- Candy Categories -->
+        <h2 class="section-title"><i class="fas fa-candy-cane"></i> Candy Categories</h2>
+        <div class="categories-grid">
+            <div class="category-card" onclick="window.location.href='gummy.html'">
+                <div class="category-image candy-bg">
+                    <i class="fas fa-bear"></i>
+                </div>
+                <div class="category-info">
+                    <h3>Gummy Candy</h3>
+                    <p>Chewy, fruity, and fun gummy treats</p>
+                    <span class="item-count">6 items</span><br>
+                    <a href="gummy.html" class="btn-view">Shop Now</a>
+                </div>
+            </div>
+
+            <div class="category-card" onclick="window.location.href='jelly-beans.html'">
+                <div class="category-image candy-bg">
+                    <i class="fas fa-egg"></i>
+                </div>
+                <div class="category-info">
+                    <h3>Jelly Beans</h3>
+                    <p>Colorful bean-shaped candies</p>
+                    <span class="item-count">6 items</span><br>
+                    <a href="jelly-beans.html" class="btn-view">Shop Now</a>
+                </div>
+            </div>
+
+            <div class="category-card" onclick="window.location.href='mints.html'">
+                <div class="category-image candy-bg">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="category-info">
+                    <h3>Mints & Peppermints</h3>
+                    <p>Fresh and cool minty candies</p>
+                    <span class="item-count">6 items</span><br>
+                    <a href="mints.html" class="btn-view">Shop Now</a>
+                </div>
+            </div>
+
+            <div class="category-card" onclick="window.location.href='sour.html'">
+                <div class="category-image candy-bg">
+                    <i class="fas fa-lemon"></i>
+                </div>
+                <div class="category-info">
+                    <h3>Sour Candy</h3>
+                    <p>Tangy and pucker-inducing treats</p>
+                    <span class="item-count">6 items</span><br>
+                    <a href="sour.html" class="btn-view">Shop Now</a>
+                </div>
+            </div>
+
+            <div class="category-card" onclick="window.location.href='chocolate.html'">
+                <div class="category-image candy-bg">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="category-info">
+                    <h3>Chocolate Candy</h3>
+                    <p>Rich and creamy chocolate delights</p>
+                    <span class="item-count">6 items</span><br>
+                    <a href="chocolate.html" class="btn-view">Shop Now</a>
+                </div>
+            </div>
+
+            <div class="category-card" onclick="window.location.href='lollipops.html'">
+                <div class="category-image candy-bg">
+                    <i class="fas fa-candy-cane"></i>
+                </div>
+                <div class="category-info">
+                    <h3>Lollipops & Suckers</h3>
+                    <p>Classic lollipops and suckers</p>
+                    <span class="item-count">6 items</span><br>
+                    <a href="lollipops.html" class="btn-view">Shop Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cake Categories -->
+        <h2 class="section-title"><i class="fas fa-birthday-cake"></i> Cake Categories</h2>
+        <div class="categories-grid">
+            <div class="category-card" onclick="window.location.href='carrot-cake.html'">
+                <div class="category-image cake-bg">
+                    <i class="fas

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - ANGEL'S SWEET HEAVEN Store</title>
+    <title>Reviews - Angel's Sweet Heaven</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* ===== RESET & BASE STYLES ===== */
@@ -190,6 +190,7 @@
             padding-left: 25px;
         }
 
+
         /* ===== PAGE CONTAINER ===== */
         .page-container {
             max-width: 1200px;
@@ -199,7 +200,7 @@
 
         .page-title {
             color: var(--burgundy);
-            margin-bottom: 40px;
+            margin-bottom: 10px;
             font-size: 36px;
             text-align: center;
             position: relative;
@@ -214,188 +215,130 @@
             margin: 15px auto 0;
         }
 
-        /* ===== CONTACT PAGE ===== */
-        .contact-container {
+        .page-subtitle {
+            text-align: center;
+            color: var(--gray);
+            font-size: 18px;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        /* ===== REVIEWS CONTAINER ===== */
+        .reviews-container {
+            max-width: 900px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
             gap: 30px;
         }
 
-        .contact-info {
-            background-color: var(--pink-light);
-            padding: 40px;
+        .review-card {
+            background-color: var(--white);
+            padding: 35px;
             border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(128, 0, 32, 0.1);
+            border-left: 5px solid var(--pink);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(128, 0, 32, 0.15);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .reviewer-avatar {
+            width: 50px;
+            height: 50px;
+            background-color: var(--pink-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: var(--burgundy);
             border: 2px solid var(--pink);
         }
 
-        .contact-info h2 {
+        .reviewer-email {
             color: var(--burgundy);
-            margin: 25px 0 15px;
-            font-size: 24px;
-            border-bottom: 2px solid var(--pink);
-            padding-bottom: 10px;
+            font-weight: 600;
+            font-size: 14px;
         }
 
-        .contact-info h2:first-child {
-            margin-top: 0;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            background-color: var(--white);
-            padding: 15px;
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-
-        .info-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 3px 10px rgba(128, 0, 32, 0.1);
-        }
-
-        .info-item i {
-            width: 45px;
-            height: 45px;
-            background-color: var(--burgundy);
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .review-rating {
+            color: var(--burgundy);
             font-size: 18px;
-            flex-shrink: 0;
+            letter-spacing: 2px;
         }
 
-        .info-item p {
+        .review-title {
+            color: var(--burgundy);
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .review-text {
             color: #555;
+            line-height: 1.8;
             font-size: 15px;
         }
 
-        .social-icons.large {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
+        .review-text p {
+            margin-bottom: 12px;
         }
 
-        .social-icons.large a {
-            font-size: 24px;
-            color: var(--burgundy);
-            transition: all 0.3s;
-            background-color: var(--white);
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-        }
-
-        .social-icons.large a:hover {
-            background-color: var(--burgundy);
-            color: var(--white);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(128, 0, 32, 0.2);
-        }
-
-        .contact-form {
-            background-color: var(--white);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(128, 0, 32, 0.1);
-            border: 2px solid var(--pink-light);
-        }
-
-        .contact-form h2 {
-            color: var(--burgundy);
-            margin-bottom: 25px;
-            font-size: 24px;
-            border-bottom: 2px solid var(--pink);
-            padding-bottom: 10px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--burgundy);
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 14px;
-            transition: border-color 0.3s;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--pink);
-            box-shadow: 0 0 0 3px rgba(255, 182, 193, 0.2);
-        }
-
-        .btn-primary {
-            display: inline-block;
-            background-color: var(--burgundy);
-            color: var(--white);
-            padding: 14px 35px;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--pink-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(128, 0, 32, 0.3);
+        .review-text p:last-child {
+            margin-bottom: 0;
         }
 
         /* ===== FOOTER ===== */
         footer {
             background-color: var(--burgundy-dark);
             color: var(--white);
-            padding: 40px 20px;
+            padding: 50px 40px 20px;
             margin-top: 60px;
         }
 
         .footer-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
-        }
-
-        .footer-section {
-            flex: 1;
-            min-width: 250px;
+            margin-bottom: 40px;
         }
 
         .footer-section h4 {
-            color: var(--pink);
             margin-bottom: 20px;
             font-size: 18px;
-            border-bottom: 2px solid var(--pink);
+            position: relative;
             padding-bottom: 10px;
-            display: inline-block;
+            color: var(--pink);
+        }
+
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--pink);
         }
 
         .footer-section ul li {
@@ -403,12 +346,14 @@
         }
 
         .footer-section a {
-            color: #ddd;
+            opacity: 0.8;
             transition: all 0.3s;
+            color: #ddd;
             display: inline-block;
         }
 
         .footer-section a:hover {
+            opacity: 1;
             color: var(--pink);
             transform: translateX(5px);
         }
@@ -420,7 +365,7 @@
         }
 
         .social-icons a {
-            font-size: 1.5rem;
+            font-size: 20px;
             color: var(--white);
             transition: all 0.3s;
             background-color: rgba(255, 255, 255, 0.1);
@@ -439,20 +384,18 @@
         }
 
         .footer-bottom {
-            text-align: center;
-            margin-top: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 182, 193, 0.2);
-            color: #aaa;
+            text-align: center;
             font-size: 14px;
+            opacity: 0.8;
+            color: #aaa;
         }
 
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 768px) {
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-            
             .header-container {
                 flex-direction: column;
                 gap: 15px;
@@ -465,8 +408,16 @@
             }
             
             .footer-content {
-                flex-direction: column;
+                grid-template-columns: 1fr;
                 gap: 30px;
+            }
+            
+            .review-card {
+                padding: 20px;
+            }
+            
+            .review-header {
+                flex-direction: column;
             }
         }
     </style>
@@ -481,7 +432,7 @@
     <header>
         <div class="header-container">
             <div class="logo">
-                <h1>ANGEL'S SWEET HEAVEN <span>STORE</span></h1>
+                <h1>ANGEL'S SWEET HEAVEN</h1>
             </div>
             <div class="header-icons">
                 <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
@@ -490,7 +441,7 @@
         </div>
     </header>
 
-    <!-- Navigation -->
+     <!-- Navigation -->
     <nav>
         <ul class="nav-menu">
             <li><a href="index.html">Home</a></li>
@@ -510,60 +461,69 @@
         </ul>
     </nav>
 
-
-    <!-- Contact Content -->
+    <!-- Reviews Content -->
     <div class="page-container">
-        <h1 class="page-title">Contact Us</h1>
+        <h1 class="page-title">Reviews</h1>
+        <p class="page-subtitle">What our customers say about us</p>
         
-        <div class="contact-container">
-            <div class="contact-info">
-                <h2>Get in Touch</h2>
-                <div class="info-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p>56789 Candy Lane, Mogoditshane, ST 12345</p>
+        <div class="reviews-container">
+            <!-- Review 1 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span class="reviewer-email">bunnyythee@gmail.com</span>
+                    </div>
+                    <div class="review-rating">
+                        ★★★★★
+                    </div>
                 </div>
-                <div class="info-item">
-                    <i class="fas fa-phone"></i>
-                    <p>+267 76 234 982</p>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-envelope"></i>
-                    <p>angel'ssweetheavenstore@gmail.com</p>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-clock"></i>
-                    <p>Mon-Fri: 9am - 6pm</p>
-                </div>
-                
-                <h2>Follow Us</h2>
-                <div class="social-icons large">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
+                <h3 class="review-title">Absolutely Delicious! Will Order Again</h3>
+                <div class="review-text">
+                    <p>I ordered the red velvet cake and some assorted gummy candies for my daughter's birthday, and everything was perfect! The cake was moist, beautifully decorated, and tasted heavenly. The gummy candies were fresh, soft, and full of flavor. Delivery was on time and the packaging was excellent. Angel's Sweet Heaven truly lives up to its name. Highly recommend to anyone looking for quality sweets and cakes!</p>
                 </div>
             </div>
-            
-            <div class="contact-form">
-                <h2>Send Us a Message</h2>
-                <form>
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" required>
+
+            <!-- Review 2 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span class="reviewer-email">mmagwelee@gmail.com</span>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" required>
+                    <div class="review-rating">
+                        ★★★★★
                     </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" required>
+                </div>
+                <h3 class="review-title">Review 2: Incredibly Tasty Cakes & Fresh</h3>
+                <div class="review-text">
+                    <p><strong>Title: The freshest and most delicious sweets in town!</strong></p>
+                    <p><strong>Rating: ★★★★★</strong></p>
+                    <p>I've tried both their cakes and Indian sweets, and everything is outstanding. The chocolate truffle cake was moist, rich, and perfectly balanced—not too sweet, just heavenly. Their gummy beans and mints tasted like they were made that morning; soft, aromatic, and melt-in-your-mouth fresh. You can really tell they use quality ingredients. No stale or overly sugary taste at all. If you want authentic, fresh sweets and cakes that actually feel homemade in the best way, Angel's Sweet Heaven is the place to order from.</p>
+                </div>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span class="reviewer-email">davidsteven@gmail.com</span>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" rows="5" required></textarea>
+                    <div class="review-rating">
+                        ★★★★★
                     </div>
-                    <button type="submit" class="btn-primary">Send Message</button>
-                </form>
+                </div>
+                <h3 class="review-title">Best Customer Service & Amazing Treats</h3>
+                <div class="review-text">
+                    <p>I had a last-minute order for a corporate event and Angel's Sweet Heaven went above and beyond to accommodate me. The vanilla cake was a showstopper—light, fluffy, and elegantly decorated. The mixed candy platters were a huge hit with everyone at the office. Their attention to detail, prompt communication, and friendly service made the entire experience stress-free. I've found my go-to sweet shop for all future events. Thank you, Angel's Sweet Heaven team!</p>
+                </div>
             </div>
         </div>
     </div>
@@ -575,8 +535,8 @@
                 <h4>Quick Links</h4>
                 <ul>
                     <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
                     <li><a href="exchange-policy.html">Exchange & Refund Policy</a></li>
-                    <li><a href="reviews.html">Reviews</a></li>
                 </ul>
             </div>
             <div class="footer-section">
